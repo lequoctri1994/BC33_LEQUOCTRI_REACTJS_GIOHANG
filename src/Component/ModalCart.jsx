@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 
 export default class ModalCart extends Component {
+    
+
+    state = {
+        totalProd : 1,
+    }
 
     
+   
 
     render() {
         const { prod} = this.props;
@@ -44,12 +50,20 @@ export default class ModalCart extends Component {
                                                 </th>
                                                 <th>{prod.tenSP}</th>
                                                 <th>
-                                                    <button className='btn btn-primary'>+</button>
-                                                    1
-                                                    <button className='btn btn-primary'>-</button>
+                                                    <button className='btn btn-primary mx-1' onClick={()=>{
+                                                        this.setState ({
+                                                            totalProd : this.state.totalProd - 1
+                                                        })
+                                                    }}>-</button>
+                                                    {this.state.totalProd}
+                                                    <button className='btn btn-primary mx-1' onClick={()=> {
+                                                        this.setState ({
+                                                            totalProd: this.state.totalProd + 1
+                                                        })
+                                                    }}>+</button>
                                                 </th>
-                                                <th>{prod.giaBan}</th>
-                                                <th>{this.calcPrice}</th>
+                                                <th>{(prod.giaBan).toLocaleString()}</th>
+                                                <th>{(prod.giaBan * this.state.totalProd).toLocaleString()}</th>
                                                 <th>
                                                     <button className='btn btn-danger'>Xóa</button>
                                                 </th>
