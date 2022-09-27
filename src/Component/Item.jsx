@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import ModalCart from './ModalCart';
 
 export default class Item extends Component {
   render() {
-    const {prod, xemChiTiet} = this.props;
+    const {prod, xemChiTiet, themGioHang} = this.props;
     return (
         <div className="card">
         <img
@@ -19,8 +20,12 @@ export default class Item extends Component {
             // this.xemChiTiet(prod)
             xemChiTiet(prod)
           }}>Xem chi tiết</button>
-          <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId">Thêm vào giỏ hàng</button>
+          <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId" onClick={()=>{
+
+            themGioHang(prod)
+          }} >Thêm vào giỏ hàng</button>
         </div>
+        <ModalCart prod={prod} themGioHang={themGioHang}/>
       </div>
     )
   }

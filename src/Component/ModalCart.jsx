@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 export default class ModalCart extends Component {
     render() {
+        const { prod, themGioHang } = this.props;
+        console.log(prod)
         return (
             <div>
                 {/* Modal trigger button */}
@@ -18,19 +20,40 @@ export default class ModalCart extends Component {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                             </div>
                             <div className="modal-body">
-                                <table>
-                                    <tr>
-                                        <th>Mã sản phẩm</th>
-                                        <th>Hình Ảnh</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Số lượng</th>
-                                        <th>Đơn Giá</th>
-                                        <th>Thành Tiền</th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
+                                <table className='table'>
+                                    <thead className=' bg-dark text-white'>
+                                        <tr>
+                                            <th>Mã sản phẩm</th>
+                                            <th>Hình Ảnh</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Thành Tiền</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         <tr>
+                                                <th>{prod.maSP}</th>
+                                                <th>
+                                                    <img src={prod.hinhAnh
+                                                    } alt="" height={50} width={50} />
+                                                </th>
+                                                <th>{prod.tenSP}</th>
+                                                <th>
+                                                    <button className='btn btn-primary'>+</button>
+                                                    1
+                                                    <button className='btn btn-primary'>-</button>
+                                                </th>
+                                                <th>{prod.giaBan}</th>
+                                                <th>{prod.giaBan}</th>
+                                                <th>
+                                                    <button className='btn btn-danger'>Xóa</button>
+                                                </th>
+                                            </tr>
 
-                                    </tr>
+                                    </tbody>
+
                                 </table>
                             </div>
                             <div className="modal-footer">

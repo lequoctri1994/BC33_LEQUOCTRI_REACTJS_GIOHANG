@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Item from "./Item";
+import ModalCart from "./ModalCart";
 
 const arrItem = [
   {
@@ -60,7 +61,7 @@ export default class ProductItem extends Component {
   renderProduct = () => {
     return arrItem.map((prod,index)=>{
       return <div className="col-4" key={index}>
-      <Item prod={prod} xemChiTiet={this.xemChiTiet}/>
+      <Item prod={prod} xemChiTiet={this.xemChiTiet} themGioHang={this.themGioHang}/>
     </div>
     })
   }
@@ -77,7 +78,21 @@ export default class ProductItem extends Component {
       rom: "64 GB",
       giaBan: 27000000,
       hinhAnh: "./img/applephone.jpg",
+    },
+
+    prodCart : {
+      maSP: 0,
+      tenSP: "",
+      manHinh: "",
+      heDieuHanh: "",
+      cameraSau: "",
+      cameraTruoc: "",
+      ram: "",
+      rom: "",
+      giaBan: 0,
+      hinhAnh: "",
     }
+    
   }
 
   xemChiTiet = (prodClick) => {
@@ -86,11 +101,20 @@ export default class ProductItem extends Component {
     })
   }
 
+  themGioHang = (prodClick) => {
+    this.setState ({
+      prodCart : prodClick
+    })
+  }
+
 
   render() {
     let {maSP, tenSP, manHinh, heDieuHanh, cameraSau, cameraTruoc, ram, rom, giaBan, hinhAnh} = this.state.prodDetail;
     return (
+      
+      
       <div className="container">
+       
         <h1 className="text-center">Danh sách sản phẩm</h1>
         <div className="row">
           {this.renderProduct()}

@@ -6,7 +6,7 @@ export default class ExerciseCart extends Component {
   render() {
     return (
       <div>
-        <ModalCart/>
+        {/* <ModalCart/> */}
         <ProductList/>
       </div>
     )
