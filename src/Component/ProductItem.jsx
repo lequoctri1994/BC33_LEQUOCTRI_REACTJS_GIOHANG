@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Item from "./Item";
 import ModalCart from "./ModalCart";
 
 const arrItem = [
@@ -61,7 +60,26 @@ export default class ProductItem extends Component {
   renderProduct = () => {
     return arrItem.map((prod,index)=>{
       return <div className="col-4" key={index}>
-      <Item prod={prod} xemChiTiet={this.xemChiTiet} themGioHang={this.themGioHang}/>
+       <div className="card">
+        <img
+          src={prod.hinhAnh}
+          alt="..."
+          height={400}
+          className="w-100"
+          style={{ objectFit: "contain" }}
+        />
+        <div className="card-body">
+          <h1>{prod.tenSP}</h1>
+          <h4>{prod.giaBan.toLocaleString()}</h4>
+          <button className="btn btn-success" onClick={()=>{
+            // this.xemChiTiet(prod)
+            this.xemChiTiet(prod)
+          }}>Xem chi tiết</button>
+          <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalId" onClick={()=>{
+            this.themGioHang(prod)
+          }} >Thêm vào giỏ hàng</button>
+        </div>
+      </div>
     </div>
     })
   }
@@ -101,10 +119,10 @@ export default class ProductItem extends Component {
     })
   }
 
-  themGioHang = (prodClick) => {
-    this.setState ({
-      prodCart : prodClick
-    })
+  themGioHang = (phoneClick) => {
+   this.setState({
+    prodCart : phoneClick
+   })
   }
 
 
@@ -114,7 +132,7 @@ export default class ProductItem extends Component {
       
       
       <div className="container">
-       
+        <ModalCart prod={this.state.prodCart}/>
         <h1 className="text-center">Danh sách sản phẩm</h1>
         <div className="row">
           {this.renderProduct()}

@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 
 export default class ModalCart extends Component {
+
+    
+
     render() {
-        const { prod, themGioHang } = this.props;
+        const { prod} = this.props;
         console.log(prod)
         return (
             <div>
@@ -46,7 +49,7 @@ export default class ModalCart extends Component {
                                                     <button className='btn btn-primary'>-</button>
                                                 </th>
                                                 <th>{prod.giaBan}</th>
-                                                <th>{prod.giaBan}</th>
+                                                <th>{this.calcPrice}</th>
                                                 <th>
                                                     <button className='btn btn-danger'>Xóa</button>
                                                 </th>
