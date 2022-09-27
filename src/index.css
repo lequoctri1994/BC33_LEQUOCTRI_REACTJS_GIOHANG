@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.card img {
+  background-size: contain;
+}
+
+.card-body .productName h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.card-body .btn-success {
+  margin-right: 10px;
+}
